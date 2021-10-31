@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/site/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/site/" rel="alternate" type="text/html" /><updated>2021-10-31T02:30:23-05:00</updated><id>http://localhost:4000/site/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">a post with math</title><link href="http://localhost:4000/site/blog/2015/math/" rel="alternate" type="text/html" title="a post with math" /><published>2015-10-20T10:12:00-05:00</published><updated>2015-10-20T10:12:00-05:00</updated><id>http://localhost:4000/site/blog/2015/math</id><content type="html" xml:base="http://localhost:4000/site/blog/2015/math/">&lt;p&gt;This theme supports rendering beautiful math in inline and display modes using &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;MathJax 3&lt;/a&gt; engine. You just need to surround your math expression with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;, like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ E = mc^2 $$&lt;/code&gt;. If you leave it inside a paragraph, it will produce an inline expression, just like \(E = mc^2\).&lt;/p&gt;
+
+&lt;p&gt;To use display mode, again surround your expression with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; and place it as a separate paragraph. Here is an example:&lt;/p&gt;
+
+\[\sum_{k=1}^\infty |\langle x, e_k \rangle|^2 \leq \|x\|^2\]
+
+&lt;p&gt;You can also use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\begin{equation}...\end{equation}&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; for display mode math.
+MathJax will automatically number equations:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:caushy-shwarz}
+\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;and by adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\label{...}&lt;/code&gt; inside the equation environment, we can now refer to the equation using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\eqref&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that MathJax 3 is &lt;a href=&quot;https://docs.mathjax.org/en/latest/upgrading/whats-new-3.0.html&quot;&gt;a major re-write of MathJax&lt;/a&gt; that brought a significant improvement to the loading and rendering speed, which is now &lt;a href=&quot;http://www.intmath.com/cg5/katex-mathjax-comparison.php&quot;&gt;on par with KaTeX&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">This theme supports rendering beautiful math in inline and display modes using MathJax 3 engine. You just need to surround your math expression with $$, like $$ E = mc^2 $$. If you leave it inside a paragraph, it will produce an inline expression, just like \(E = mc^2\).</summary></entry></feed>
