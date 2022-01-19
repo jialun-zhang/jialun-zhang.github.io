@@ -11,8 +11,6 @@ social: false  # includes social icons at the bottom of the page
 
 
 ---
-
-<!-- [Google Scholar](https://scholar.google.com/citations?user=3RKIpv8AAAAJ&hl=en) -->
 - **Email**: jialun2@illinois.edu
 - **Office**: ECE Building, 306 N Wright St, Urbana, IL 61801
 - **Phone**: 909-575-7644
@@ -41,3 +39,5 @@ Di Kang, Tharathep Sangsawang, Jialun Zhang
 A. J. Bernoff, C. M. Topaz, M. R. D'Orsogna, L. Edelstein-Keshet, R. Jones, J. Zhang, S. J. DeVore
 and S. Schein
 (Submitted)
+
+### Notes
