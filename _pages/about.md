@@ -13,8 +13,10 @@ social: false  # includes social icons at the bottom of the page
 ---
 
 <!-- [Google Scholar](https://scholar.google.com/citations?user=3RKIpv8AAAAJ&hl=en) -->
-### Contact
-Email: jialun2@illinois.edu
+- **Email**: jialun2@illinois.edu
+- **Office**: ECE Building, 306 N Wright St, Urbana, IL 61801
+- **Phone**: 909-575-7644
+- [Google Scholar](https://scholar.google.com/citations?user=p0qkHeoAAAAJ&hl=en&authuser=2)
 
 
 ### About Me
