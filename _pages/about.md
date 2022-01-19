@@ -12,7 +12,7 @@ social: false  # includes social icons at the bottom of the page
 
 ---
 
-[Google Scholar](https://scholar.google.com/citations?user=3RKIpv8AAAAJ&hl=en)
+<!-- [Google Scholar](https://scholar.google.com/citations?user=3RKIpv8AAAAJ&hl=en) -->
 ### Contact
 Email: jialun2@illinois.edu
 
