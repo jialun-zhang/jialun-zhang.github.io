@@ -1,0 +1,33 @@
+I"�	<ul>
+  <li><strong>Email</strong>: jialun2@illinois.edu</li>
+  <li><strong>Office</strong>: ECE Building, 306 N Wright St, Urbana, IL 61801</li>
+  <li><strong>Phone</strong>: 909-575-7644</li>
+  <li><a href="https://scholar.google.com/citations?user=p0qkHeoAAAAJ&amp;hl=en&amp;authuser=2">Google Scholar</a></li>
+</ul>
+
+<h3 id="about-me">About Me</h3>
+<p>Hello! My name is Gavin Zhang. I am a second-year PhD student in the <a href="https://ece.illinois.edu/">ECE department</a> at the University of Illinois at Urbana Champaign. My advisor is <a href="https://ryz.ece.illinois.edu/">Richard Y. Zhang</a>. I am also a member of the <a href="https://csl.illinois.edu/">coordinated science laboratory</a> at UIUC.</p>
+
+<p>I’m mainly interested using optimization and machine learning to solve large-scale, data-driven problems with provable guarantees.  Previously I also have worked in other areas of applied and computational mathematics, such as numerical PDEs and mathematical biology.</p>
+
+<p>I received a bachelor’s degree in mathematics from <a href="https://www.hmc.edu/">Harvey Mudd College</a>, where I worked with professors <a href="https://www1.cmc.edu/pages/faculty/CKao/">Chiu-Yen Kao</a> and <a href="http://www.math.hmc.edu/~ajb/">Andrew Bernoff</a> on numerical PDEs and mathematical biology. I also received a master’s degree in computational mathematics from <a href="https://icme.stanford.edu/">Stanford</a>, where I worked with <a href="https://stanford.edu/~pilanci/">Mert Pilanci</a>.</p>
+
+<h3 id="publications">Publications</h3>
+<ol>
+  <li><a href="/placeholder">Preconditioned Gradient Descent for Over-parameterized Nonconvex Matrix Factorization.</a><br />
+Gavin Zhang, Salar Fattahi, Richard Y. Zhang.<br />
+Advances in Neural Information Processing Systems (NeurIPS 2021)</li>
+  <li><a href="https://arxiv.org/abs/2006.06915">How Many Samples is a Good Initial Point Worth in Low-rank Matrix Recovery?</a><br />
+Gavin Zhang, Richard Y. Zhang.<br />
+<em>Spotlight Presentation</em>. Advances in Neural Information Processing Systems (NeurIPS 2020)</li>
+  <li><a href="https://arxiv.org/abs/1610.06303">Weak Solution of a Doubly Degenerate Parabolic Equation.</a><br />
+Di Kang, Tharathep Sangsawang, Jialun Zhang<br />
+(Submitted)</li>
+  <li><a href="/placeholder">Agent-based and Continuous Models of Locust Hopper Bands.</a><br />
+A. J. Bernoff, C. M. Topaz, M. R. D’Orsogna, L. Edelstein-Keshet, R. Jones, J. Zhang, S. J. DeVore
+and S. Schein
+(Submitted)</li>
+</ol>
+
+<h3 id="notes">Notes</h3>
+:ET
