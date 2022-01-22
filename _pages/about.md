@@ -18,7 +18,7 @@ social: false  # includes social icons at the bottom of the page
 
 
 ### About Me
-Hello! My name is Gavin Zhang. I am a second-year PhD student in the [ECE department](https://ece.illinois.edu/) at the University of Illinois at Urbana Champaign. My advisor is [Richard Y. Zhang](https://ryz.ece.illinois.edu/). I am also a member of the [coordinated science laboratory](https://csl.illinois.edu/) at UIUC.
+Hello! My name is Gavin (Jialun) Zhang. I am a second-year PhD student in the [ECE department](https://ece.illinois.edu/) at the University of Illinois at Urbana Champaign. My advisor is [Richard Y. Zhang](https://ryz.ece.illinois.edu/). I am also a member of the [coordinated science laboratory](https://csl.illinois.edu/) at UIUC.
 
 I'm mainly interested using optimization and machine learning to solve large-scale, data-driven problems with provable guarantees.  Previously I also have worked in other areas of applied and computational mathematics, such as numerical PDEs and mathematical biology.
 
