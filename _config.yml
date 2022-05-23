@@ -71,12 +71,13 @@ rss_icon: true
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
 
-google_analytics: UA-XXXXXXXXX # out your google-analytics code
+google_analytics: G-6MRGMNQPYS # out your google-analytics code
 panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
+
 
 blog_name: My Notes  # your blog must have a name for it to show up in the nav bar
 blog_description:
