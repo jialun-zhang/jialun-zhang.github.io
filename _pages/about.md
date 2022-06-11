@@ -40,4 +40,3 @@ A. J. Bernoff, C. M. Topaz, M. R. D'Orsogna, L. Edelstein-Keshet, R. Jones, J. Z
 and S. Schein
 (Submitted)
 
-### Notes
