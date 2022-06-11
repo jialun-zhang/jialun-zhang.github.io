@@ -26,7 +26,7 @@ I'm mainly interested using optimization and machine learning to solve large-sca
 I received a bachelor's degree in mathematics from [Harvey Mudd College](https://www.hmc.edu/), where I worked with professors [Chiu-Yen Kao](https://www1.cmc.edu/pages/faculty/CKao/) and [Andrew Bernoff](http://www.math.hmc.edu/~ajb/) on numerical PDEs and mathematical biology. I also received a master's degree in computational mathematics from [Stanford](https://icme.stanford.edu/), where I worked with [Mert Pilanci](https://stanford.edu/~pilanci/).
 
 ### Publications
-1. [Preconditioned Gradient Descent for Overparameterized Nonconvex Burer-Monteiro Factorization with Global Optimality Certification](https://arxiv.org/abs/2206.03345)
+1. [Preconditioned Gradient Descent for Overparameterized Nonconvex Burer-Monteiro Factorization with Global Optimality Certification](https://arxiv.org/abs/2206.03345) 
 Gavin Zhang, Salar Fattahi, Richard Y. Zhang.  
 Advances in Neural Information Processing Systems (NeurIPS 2021)
 2. [Preconditioned Gradient Descent for Over-parameterized Nonconvex Matrix Factorization.]([/placeholder](https://papers.nips.cc/paper/2021/file/2f2cd5c753d3cee48e47dbb5bbaed331-Paper.pdf))  
