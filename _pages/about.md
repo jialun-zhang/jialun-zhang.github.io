@@ -33,7 +33,7 @@ Gavin Zhang, Hong-ming Chiu, Richard Y. Zhang
 Geyu Liang, Gavin Zhang, Salar Fattahi, Richard Y. Zhang  
 *Submitted*
 - [Preconditioned Gradient Descent for Overparameterized Nonconvex Burer-Monteiro Factorization with Global Optimality Certification](https://arxiv.org/abs/2206.03345) 
-Gavin Zhang, Salar Fattahi, Richard Y. Zhang.  
+Gavin Zhang, Salar Fattahi, Richard Y. Zhang  
 Journal of Machine Learning Research (JMLR 2023)
 - [Accelerating SGD for Highly Ill-Conditioned Huge-Scale Online Matrix Completion](https://arxiv.org/abs/2208.11246)  
 Gavin Zhang, Hong-ming Chiu, Richard Y. Zhang  
