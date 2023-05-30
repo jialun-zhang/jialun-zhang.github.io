@@ -26,7 +26,7 @@ I'm mainly interested using optimization and machine learning to solve large-sca
 I received a bachelor's degree in mathematics from [Harvey Mudd College](https://www.hmc.edu/), where I worked with professors [Chiu-Yen Kao](https://www1.cmc.edu/pages/faculty/CKao/) and [Andrew Bernoff](http://www.math.hmc.edu/~ajb/) on numerical PDEs and mathematical biology. I also received a master's degree in computational mathematics from [Stanford](https://icme.stanford.edu/), where I worked with [Mert Pilanci](https://stanford.edu/~pilanci/).
 
 ### Publications and Preprints
-- [Fast and Minimax Optimal Estimation of Low-rank Matrices via Gradient Descent](https://arxiv.org/abs/2210.12816)     
+- [Fast and Minimax Optimal Estimation of Low-rank Matrices via Gradient Descent](https://arxiv.org/abs/2305.17224)     
 Gavin Zhang, Hong-ming Chiu, Richard Y. Zhang  
 *Submitted*
 - [Simple Alternating Minimization Provably Solves Complete Dictionary Learning](https://arxiv.org/abs/2210.12816)  
@@ -43,7 +43,7 @@ Gavin Zhang, Salar Fattahi, Richard Y. Zhang.
 Advances in Neural Information Processing Systems (NeurIPS 2021)
 - [How Many Samples is a Good Initial Point Worth in Low-rank Matrix Recovery?](https://arxiv.org/abs/2006.06915)  
 Gavin Zhang, Richard Y. Zhang.  
-*Spotlight Presentation*. Advances in Neural Information Processing Systems (NeurIPS 2020)
+**Spotlight Presentation (Top 4%)**. Advances in Neural Information Processing Systems (NeurIPS 2020)
 - [Weak Solution of a Doubly Degenerate Parabolic Equation](https://arxiv.org/abs/1610.06303)  
 Di Kang, Tharathep Sangsawang, Gavin Zhang  
 (Submitted)
