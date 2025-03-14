@@ -1,0 +1,880 @@
+/* Material Design inspired color scheme */
+:root {
+    --primary-color: #1565c0;
+    --primary-light: #42a5f5;
+    --primary-dark: #0d47a1;
+    --secondary-color: #333333;
+    --text-primary: #121212;
+    --text-secondary: #555555;
+    --background: #ffffff;
+    --surface: #ffffff;
+    --error: #c62828;
+    --max-width: 800px;
+    --spacing-unit: 8px;
+    --conference-color: #1b5e20;
+    --journal-color: #1b5e20;
+    --submitted-color: #e65100;
+}
+
+/* Base styles */
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    color: var(--text-primary);
+    padding: calc(var(--spacing-unit) * 2) 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit));
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+nav a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+/* Profile section */
+.profile {
+    margin: calc(var(--spacing-unit) * 4) 0;
+    padding: calc(var(--spacing-unit) * 3);
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+@media (min-width: 768px) {
+    .profile-content {
+        flex-direction: row;
+        gap: calc(var(--spacing-unit) * 4);
+    }
+    
+    .profile-text {
+        order: 1;
+    }
+    
+    .profile-photo {
+        order: 2;
+    }
+}
+
+.profile-photo {
+    flex-shrink: 0;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    align-self: center;
+}
+
+@media (min-width: 768px) {
+    .profile-photo {
+        margin-bottom: 0;
+        margin-left: calc(var(--spacing-unit) * 3);
+        align-self: flex-start;
+    }
+}
+
+.profile-photo img {
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.profile-text {
+    flex-grow: 1;
+}
+
+.profile h2 {
+    color: var(--primary-dark);
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.profile p {
+    color: var(--text-primary);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Contact info section */
+.contact-info {
+    margin-top: calc(var(--spacing-unit) * 3);
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.contact-info p {
+    margin-bottom: calc(var(--spacing-unit));
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-info p:last-of-type {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.contact-info .label {
+    font-weight: 600;
+    min-width: 60px;
+    margin-right: calc(var(--spacing-unit) * 2);
+    color: var(--primary-dark);
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: calc(var(--spacing-unit));
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit));
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Publications section */
+.publications {
+    margin: calc(var(--spacing-unit) * 4) 0;
+    background-color: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: calc(var(--spacing-unit) * 3);
+    transition: box-shadow 0.2s ease;
+}
+
+.publications:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.publications h2 {
+    color: var(--primary-color);
+    margin: 0 0 calc(var(--spacing-unit) * 3) 0;
+    font-weight: 500;
+    padding-bottom: calc(var(--spacing-unit));
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Section toggle button */
+.section-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.section-toggle-btn:hover {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.section-toggle-btn .icon {
+    transition: transform 0.3s ease;
+}
+
+.publication-item {
+    padding: calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    transition: background-color 0.2s ease;
+}
+
+.publication-item:last-child {
+    margin-bottom: 0;
+}
+
+.publication-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.publication-item h3 {
+    color: var(--text-primary);
+    margin: 0 0 calc(var(--spacing-unit)) 0;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.publication-item h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    flex-grow: 1;
+}
+
+.publication-item h3 a:hover {
+    color: var(--primary-dark);
+}
+
+/* Toggle button for publications */
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 4px;
+    margin-left: 8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.toggle-btn .icon {
+    transition: transform 0.3s ease;
+}
+
+/* Collapsible content */
+.publication-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    max-height: 500px; /* Adjust based on your content */
+    opacity: 1;
+    margin-top: calc(var(--spacing-unit));
+}
+
+.publication-item.collapsed .publication-content {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.publication-item.collapsed {
+    padding-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.publication-item.collapsed h3 {
+    margin-bottom: 0;
+}
+
+.publication-item .authors {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 calc(var(--spacing-unit) * 0.5) 0;
+}
+
+.publication-item .venue {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 calc(var(--spacing-unit)) 0;
+}
+
+.publication-item .venue .conference {
+    color: var(--conference-color);
+    font-weight: 500;
+}
+
+.publication-item .venue .journal {
+    color: var(--journal-color);
+    font-weight: 500;
+}
+
+.publication-item .venue .submitted {
+    color: var(--submitted-color);
+    font-weight: 500;
+}
+
+.publication-item .abstract {
+    margin: calc(var(--spacing-unit) * 2) 0;
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    color: var(--text-primary);
+}
+
+.publication-item .abstract h4 {
+    margin-top: 0;
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: calc(var(--spacing-unit));
+}
+
+.publication-item .abstract p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.publication-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.publication-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit));
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.publication-links a:hover {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    padding: calc(var(--spacing-unit) * 3) 0;
+    margin-top: calc(var(--spacing-unit) * 4);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 calc(var(--spacing-unit));
+    }
+
+    header {
+        padding: calc(var(--spacing-unit)) 0;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile, .publication-item {
+        padding: calc(var(--spacing-unit) * 2);
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Code syntax highlighting */
+pre {
+    background-color: #f5f5f5;
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: calc(var(--spacing-unit) * 2) 0;
+}
+
+code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* General styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    border-left: 4px solid var(--border-color);
+    margin-left: 0;
+    padding-left: 1em;
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+figure {
+    margin: 1rem 0;
+}
+
+figcaption {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+}
+
+/* Post lists */
+.post-grid, .post-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.post-card {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.post-card:last-child {
+    border-bottom: none;
+}
+
+.post-card h3 {
+    margin: 0 0 1rem 0;
+}
+
+.post-card h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.post-card h3 a:hover {
+    color: var(--primary-dark);
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.date {
+    margin-right: 1rem;
+}
+
+.reading-time {
+    margin-right: 1rem;
+}
+
+.tag {
+    background-color: var(--tag-background);
+    color: var(--tag-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+/* Individual post */
+.post-header {
+    margin-bottom: 2rem;
+}
+
+.post-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.post-content {
+    margin-bottom: 3rem;
+}
+
+.math-block {
+    overflow-x: auto;
+    padding: 1rem;
+    background-color: var(--code-background);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.citation {
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--code-background);
+    border-radius: 6px;
+}
+
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* About page */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.about-content h3 {
+    margin-top: 0;
+}
+
+.education ul,
+.experience ul,
+.publications ul {
+    list-style: none;
+    padding: 0;
+}
+
+.education li,
+.experience li,
+.publications li {
+    margin-bottom: 1.5rem;
+}
+
+.degree,
+.position {
+    display: block;
+    font-weight: 600;
+}
+
+.institution,
+.company {
+    display: block;
+    color: var(--secondary-color);
+}
+
+.years {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.description {
+    margin-top: 0.5rem;
+}
+
+/* Recent posts section */
+.recent-posts {
+    padding: 3rem 0;
+}
+
+.recent-posts h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.post-list li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-list li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav {
+        margin-top: 0;
+    }
+
+    .about-content {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .bio {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Read more button */
+.read-more {
+    display: inline-block;
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.read-more:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* Math equations */
+.math-inline {
+    display: inline-block;
+    margin: 0 0.2em;
+}
+
+.math-display {
+    display: block;
+    margin: 1.5em 0;
+    overflow-x: auto;
+}
+
+/* MathJax specific styles */
+mjx-container {
+    display: inline-block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding: 0.5em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+    display: block;
+    margin: 1em 0;
+    padding: 1em 0;
+    text-align: center;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+    padding: 0 1em;
+}
+
+/* Enhanced matrix styling */
+mjx-container mjx-mtable {
+    padding: 0.5em 0;
+    min-width: auto !important;
+}
+
+mjx-container mjx-table {
+    display: inline-table !important;
+    width: auto !important;
+}
+
+mjx-container mjx-mtr {
+    display: table-row !important;
+}
+
+mjx-container mjx-mtd {
+    display: table-cell !important;
+    text-align: center;
+    padding: 0.2em 0.5em !important;
+}
+
+/* Ensure matrices have proper spacing */
+mjx-container mjx-mo {
+    padding: 0 0.15em;
+}
+
+/* Ensure brackets are properly sized */
+mjx-container mjx-stretchy-v {
+    display: inline-block;
+    min-height: 1.2em;
+}
+
+/* Ensure proper alignment of matrix elements */
+mjx-container mjx-mrow {
+    display: block;
+    text-align: center;
+}
+
+/* Ensure proper spacing in matrices */
+mjx-container mjx-mspace {
+    margin: 0 !important;
+}
+
+/* Ensure proper vertical alignment in matrices */
+mjx-container mjx-mstyle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ensure proper rendering of fractions in matrices */
+mjx-container mjx-mfrac {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Ensure proper rendering of subscripts and superscripts in matrices */
+mjx-container mjx-msub, mjx-container mjx-msup, mjx-container mjx-msubsup {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ensure proper rendering of square roots in matrices */
+mjx-container mjx-msqrt {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ensure proper rendering of delimiters in matrices */
+mjx-container mjx-mrow > mjx-mo:first-child,
+mjx-container mjx-mrow > mjx-mo:last-child {
+    padding: 0 0.15em;
+}
+
+/* Ensure proper rendering of multi-line equations */
+mjx-container mjx-mtable[data-labels="none"] {
+    display: inline-table !important;
+    width: auto !important;
+}
+
+/* Ensure proper rendering of aligned equations */
+mjx-container mjx-mtable[data-align="center"] mjx-mtd {
+    text-align: center !important;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-h {
+    display: inline-block;
+    min-width: 1.2em;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-v {
+    display: inline-block;
+    min-height: 1.2em;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-h:first-child,
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-h:last-child {
+    padding: 0 0.15em;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-v:first-child,
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-v:last-child {
+    padding: 0.15em 0;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-h:first-child + mjx-mtable,
+mjx-container mjx-mrow > mjx-mtable + mjx-mo.mjx-stretchy-h:last-child {
+    margin: 0 0.15em;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-v:first-child + mjx-mtable,
+mjx-container mjx-mrow > mjx-mtable + mjx-mo.mjx-stretchy-v:last-child {
+    margin: 0.15em 0;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-h:first-child + mjx-mrow,
+mjx-container mjx-mrow > mjx-mrow + mjx-mo.mjx-stretchy-h:last-child {
+    margin: 0 0.15em;
+}
+
+/* Ensure proper rendering of matrices with delimiters */
+mjx-container mjx-mrow > mjx-mo.mjx-stretchy-v:first-child + mjx-mrow,
+mjx-container mjx-mrow > mjx-mrow + mjx-mo.mjx-stretchy-v:last-child {
+    margin: 0.15em 0;
+}
+
+.publication-list {
+    transition: all 0.3s ease;
+} 

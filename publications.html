@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Gavin (Jialun) Zhang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gavin (Jialun) Zhang</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="publications.html" class="active">Publications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="publications">
+            <h2>Publications and Preprints</h2>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/2305.17224">Fast and Accurate Estimation of Low-Rank Matrices from Noisy Measurements via Preconditioned Non-Convex Gradient Descent</a></h3>
+                    <p class="authors"><strong>Gavin Zhang</strong>, Hong-Ming Chiu, Richard Y. Zhang</p>
+                    <p class="venue"><span class="conference">Proceedings of The 27th International Conference on Artificial Intelligence and Statistics</span> (AISTATS 2024)</p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>Non-convex gradient descent is a common approach for estimating a low-rank ground truth matrix from noisy measurements, because it has per-iteration costs as low as time, and is in theory capable of converging to a minimax optimal estimate. However, the practitioner is often constrained to just tens to hundreds of iterations, and the slow and/or inconsistent convergence of non-convex gradient descent can prevent a high-quality estimate from being obtained. Recently, the technique of preconditioning was shown to be highly effective at accelerating the local convergence of non-convex gradient descent when the measurements are noiseless. In this paper, we describe how preconditioning should be done for noisy measurements to accelerate local convergence to minimax optimality. For the symmetric matrix sensing problem, our proposed preconditioned method is guaranteed to locally converge to minimax error at a linear rate that is immune to ill-conditioning and/or over-parameterization. Using our proposed preconditioned method, we perform a 60 megapixel medical image denoising task, and observe significantly reduced noise levels compared to previous approaches.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2305.17224" target="_blank">arXiv</a>
+                        <a href="https://proceedings.mlr.press/v238/zhang24a.html" target="_blank">PMLR</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/2210.12816">Simple Alternating Minimization Provably Solves Complete Dictionary Learning</a></h3>
+                    <p class="authors">Geyu Liang, <strong>Gavin Zhang</strong>, Salar Fattahi, Richard Y. Zhang</p>
+                    <p class="venue"><span class="journal">SIAM Journal on Mathematics of Data Science</span> (SIMODS 2025) </p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We study the complete dictionary learning problem, where the goal is to recover an unknown dictionary matrix from linear measurements. We show that a simple alternating minimization algorithm provably recovers the true dictionary with high probability, under mild assumptions on the measurement model. Our analysis provides a theoretical justification for the empirical success of alternating minimization in dictionary learning applications.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2210.12816" target="_blank">arXiv</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/2206.03345">Preconditioned Gradient Descent for Overparameterized Nonconvex Burer-Monteiro Factorization with Global Optimality Certification</a></h3>
+                    <p class="authors"><strong>Gavin Zhang</strong>, Salar Fattahi, Richard Y. Zhang</p>
+                    <p class="venue"><span class="journal">Journal of Machine Learning Research</span> (JMLR 2023)</p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We study the Burer-Monteiro factorization approach for solving semidefinite programs (SDPs). We propose a preconditioned gradient descent algorithm that efficiently finds a global optimum of the nonconvex problem, with a certificate of global optimality. Our approach combines the computational efficiency of nonconvex optimization with the theoretical guarantees of convex optimization.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2206.03345" target="_blank">arXiv</a>
+                        <a href="https://jmlr.org/" target="_blank">JMLR</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/2208.11246">Accelerating SGD for Highly Ill-Conditioned Huge-Scale Online Matrix Completion</a></h3>
+                    <p class="authors"><strong>Gavin Zhang</strong>, Hong-ming Chiu, Richard Y. Zhang</p>
+                    <p class="venue"><span class="conference">Advances in Neural Information Processing Systems</span> (NeurIPS 2022)</p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We propose an accelerated stochastic gradient descent algorithm for online matrix completion problems with highly ill-conditioned matrices. Our algorithm achieves significant speedups over standard SGD by using a novel preconditioner that adapts to the problem structure. We provide theoretical guarantees and empirical evaluations on large-scale recommendation systems.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2208.11246" target="_blank">arXiv</a>
+                        <a href="https://papers.nips.cc/" target="_blank">NeurIPS</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://papers.nips.cc/paper/2021/file/2f2cd5c753d3cee48e47dbb5bbaed331-Paper.pdf">Preconditioned Gradient Descent for Over-parameterized Nonconvex Matrix Factorization</a></h3>
+                    <p class="authors"><strong>Gavin Zhang</strong>, Salar Fattahi, Richard Y. Zhang</p>
+                    <p class="venue"><span class="conference">Advances in Neural Information Processing Systems</span> (NeurIPS 2021)</p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We study the problem of recovering a low-rank matrix from linear measurements using nonconvex matrix factorization. We propose a preconditioned gradient descent algorithm that efficiently finds a global optimum of the nonconvex problem. Our approach provides both computational efficiency and theoretical guarantees for this important class of problems.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://papers.nips.cc/paper/2021/file/2f2cd5c753d3cee48e47dbb5bbaed331-Paper.pdf" target="_blank">PDF</a>
+                        <a href="https://papers.nips.cc/" target="_blank">NeurIPS</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/2006.06915">How Many Samples is a Good Initial Point Worth in Low-rank Matrix Recovery?</a></h3>
+                    <p class="authors"><strong>Gavin Zhang</strong>, Richard Y. Zhang</p>
+                    <p class="venue"><strong>Spotlight Presentation (Top 4%)</strong>. <span class="conference">Advances in Neural Information Processing Systems</span> (NeurIPS 2020)</p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We study the sample complexity of low-rank matrix recovery with a good initialization. We show that with a sufficiently accurate initial point, the sample complexity can be significantly reduced compared to random initialization. Our results provide theoretical insights into the empirical success of using good initializations in practice.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2006.06915" target="_blank">arXiv</a>
+                        <a href="https://papers.nips.cc/" target="_blank">NeurIPS</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="https://arxiv.org/abs/1610.06303">Weak Solution of a Doubly Degenerate Parabolic Equation</a></h3>
+                    <p class="authors">Di Kang, Tharathep Sangsawang, <strong>Gavin Zhang</strong></p>
+                    <p class="venue"><span class="submitted">Submitted</span></p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We study the existence and uniqueness of weak solutions to a class of doubly degenerate parabolic equations. These equations arise in various applications including flow in porous media and image processing. We establish the well-posedness of the problem under suitable assumptions on the initial data and boundary conditions.</p>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/1610.06303" target="_blank">arXiv</a>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <h3><a href="#">Agent-based and Continuous Models of Locust Hopper Bands</a></h3>
+                    <p class="authors">A. J. Bernoff, C. M. Topaz, M. R. D'Orsogna, L. Edelstein-Keshet, R. Jones, <strong>J. Zhang</strong>, S. J. DeVore and S. Schein</p>
+                    <p class="venue"><span class="submitted">Submitted</span></p>
+                    <div class="abstract">
+                        <h4>Abstract</h4>
+                        <p>We develop and analyze both agent-based and continuous models for the movement of locust hopper bands. The models incorporate social interactions, alignment, and random motion to capture the complex collective behavior observed in nature. We establish connections between the microscopic agent-based model and the macroscopic continuous model through systematic coarse-graining.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Gavin (Jialun) Zhang. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
