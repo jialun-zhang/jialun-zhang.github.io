@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Distributions: Negative Binomial and Hypergeometric - Gavin (Jialun) Zhang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gavin (Jialun) Zhang</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="blog-post-full">
+            <header class="post-header">
+                <h1>Probability Distributions: Negative Binomial and Hypergeometric</h1>
+                <div class="post-meta">
+                    <span class="post-date">March 16, 2025</span>
+                </div>
+            </header>
+            
+            <div class="post-content" id="post">
+                <h2>The Negative Binomial Distribution (sampling with replacement)</h2>
+
+                <p>
+                Consider a sequence of Bernoulli trails with success rate $p$. The negative binomial distribution is a random variable $X$ that denotes the number of failures until $r$ successes. Now we have
+                </p>
+
+                <p>
+                $$ P(X = k) = \binom{k+r-1}{r-1} (1-p)^k p^r = \binom{k+r-1}{k} (1-p)^k p^r $$
+                </p>
+
+                <p>
+                To see why the formula above is true, suppose that there are exactly $k$ failures before the $r$-th success. Then there are a total of $k+r$ trials. The last trial has to be a success, so among the first $k+r-1$ trials there must be $r-1$ successes. Thus there are a total of $\binom{k+r-1}{r-1}$ locations the first $r-1$ successes can occur. For each of these situations, the probability is $(1-p)^k p^r$.
+                </p>
+
+                <p>
+                We can also easily compute the expectation of $X$. The expected number of trails to get $r$ successes is just $r/p$. Therefore, the expected number of failures is
+                $$ \mathbb{E}[X] = r/p - r = r(1-p)/p. $$
+                </p>
+
+                <hr>
+
+                <h2>The Hypergeometric Distribution (sampling without replacement)</h2>
+
+                <h3>The Probability Mass Function</h3>
+
+                <p>
+                Consider drawing (without replacement) $n$ balls from a container that contains $N$ balls, $K$ of which are red, and the remaining are black. Let $X$ denote the number of red balls that we draw. What is the distribution of $X$?
+                </p>
+
+                <p>
+                We can write out the pmf for $X$ in two different ways. Our goal is to compute $P(X=m)$.
+                </p>
+
+                <ol>
+                    <li>
+                        <p>
+                        Consider a random permutation of the $N$ balls in a straight line, and we pick the first $n$ . We count the number of ways that the $K$ can be distributed among all $N$ balls. Obviously there are $\binom{N}{K}$ possible positions, and each one of them is equally likely. Now we count the number of ways that the $K$ red balls can be distributed so that the first $n$ balls (the ones we pick) has exactly $m$ red balls. This is obviously equal to $\binom{n}{m} \cdot \binom{N-n}{K-m}$: first we choose $m$ locations to place the red balls among the first $n$ balls. Second we choose $K-m$ positions to place the remaining red balls among the remaining $N-n$ positions. Therefore finally we find that
+                        </p>
+
+                        <p>
+                        $$ P(X=m) = \frac{\binom{n}{m}\cdot \binom{N-n}{K-m}}{\binom{N}{K}} $$
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                        There is an alternative way to consider this problem. We also consider lining up all $N$ balls. We count the number of ways that the $n$ balls we pick can be placed among the $N$ balls. Clearly there are $\binom{N}{n}$ ways in total. Now we count how many ways we can pick $n$ balls so that there are exactly $m$ red balls in them. Notice that there exactly $K$ red balls positioned among the $N$ balls. We have to pick $m$ of them. Then, we need to pick $n-m$ white balls among the $N-K$ red balls. So the final pmf we get is
+                        </p>
+
+                        <p>
+                        $$ P(X=m) = \frac{\binom{K}{m}\cdot \binom{N-K}{n-m}}{\binom{N}{n}} $$
+                        </p>
+                    </li>
+                </ol>
+
+                <p>
+                It is easy to check that these two functions are in fact equal. Check <a href="https://www.wikiwand.com/en/articles/Hypergeometric_distribution" target="_blank">Hypergeometric Random Variable</a> for reference. Moreover, the expected value, intuitively, is
+                </p>
+
+                <p>
+                $$ \mathbb{E}[X] = \frac{nK}{N}. $$
+                </p>
+
+                <h3>Symmetry for Thought</h3>
+
+                <p>
+                The hypergeometric random variable actually has a lot of symmetries. To understand why, consider the following experiment:
+                </p>
+
+                <ol>
+                    <li>First we draw $K$ balls from $N$ balls (without replacement) and color them red. Then we put the balls back into the urn. Now $K$ out of $N$ balls are red, just as before.</li>
+                    <li>Second, using the same urn, we draw $n$ balls and color them green, and put the balls back.</li>
+                </ol>
+
+                <p>
+                Now let $X$ denote the number of balls with both colors. Note that after we first color $K$ balls red and then draw $n$ balls to color them green, the expected number of balls with both colors is exactly
+                </p>
+
+                <p>
+                $$ P(X=m) = \frac{\binom{n}{m}\cdot \binom{N-n}{K-m}}{\binom{N}{K}} $$
+                </p>
+
+                <p>
+                But the order in which we color the balls don't really matter. If we color the green balls first, then we get
+                </p>
+
+                <p>
+                $$ P(X=m) = \frac{\binom{K}{m}\cdot \binom{N-K}{n-m}}{\binom{N}{n}} $$
+                </p>
+
+                <p>
+                Therefore, we proved again, via this simple thought experiment, that $K$ and $n$ are symmetric for this function.
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024-2025 Gavin (Jialun) Zhang. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

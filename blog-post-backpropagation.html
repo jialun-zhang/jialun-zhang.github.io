@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deriving Backpropagation - Gavin (Jialun) Zhang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gavin (Jialun) Zhang</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="blog-post-full">
+            <header class="post-header">
+                <h1>Deriving Backpropagation</h1>
+                <div class="post-meta">
+                    <span class="post-date">March 17, 2025</span>
+                </div>
+            </header>
+            
+            <div class="post-content" id="post">
+                <h2>Deriving Backpropagation</h2>
+
+                <p>
+                In this section we derive the backpropagation algorithm for multilayer neural networks. The model we use is as follows:
+                </p>
+                
+                <p>
+                    $$
+                    \begin{aligned}
+                    a^{[1]} & =\operatorname{ReLU}\left(W^{[1]} x+b^{[1]}\right) \\
+                    a^{[2]} & =\operatorname{ReLU}\left(W^{[2]} a^{[1]}+b^{[2]}\right) \\
+                    \cdots & \\
+                    a^{[r-1]} & =\operatorname{ReLU}\left(W^{[r-1]} a^{[r-2]}+b^{[r-1]}\right) \\
+                    a^{[r]} & =z^{[r]}=W^{[r]} a^{[r-1]}+b^{[r]} \\
+                    J & =\frac{1}{2}\left(z^{[r]}-y\right)^2
+                    \end{aligned}
+                    $$
+                </p>
+                
+                <p>
+                Here we note that $x$ is our input vector, and $y$ is our labels. Also, $W^{[i]}$ are the weight matrices, $b^{[i]}$ are the biases for each layer, and $J$ is the loss function.
+                </p>
+                
+                <p>
+                For simplicity we will denote:
+                </p>
+                
+                <p>
+                    $$z^{[k]} = W^{[k]} a^{[k-1]}+b^{[k]}, \quad \delta^{[k]}=\frac{\partial J}{\partial z^{[k]}}.$$
+                </p>
+                
+                <p>
+                Here we note a very important detail. When defining $\delta^{[k]}=\frac{\partial J}{\partial z^{[k]}}$, we let $\delta^{[k]}$ be a <strong>row</strong> vector, instead of a column vector. In other words, we differentiate between the derivative and the gradient here. As usual, the gradient is a column vector, but the derivative is the transpose of the gradient. This means that the derivative matches the usual definition of the Jacobian matrix $J$, where $f(x + dx) \approx x + J(x)dx$.
+                </p>
+                
+                <p>
+                Why do we want to use the derivative (or Jacobian) in this case? Because in the multivariate case, the Jacobian is the one that satisfies our usual notion of the chain rule. For instance, if we have a scalar function $h(x) = f(g(x))$ where $x$ is a vector, $g(x)$ is also a vector, and $f(g(x))$ is a scalar, then:
+                </p>
+                
+                <p>
+                    $$h'(x) = f'(g(x))g'(x)$$
+                </p>
+                
+                <p>
+                according to the chain rule. However, we should be very careful about applying the chain rule here, since we need to define what each derivative is. Here $h'(x)$ should be the Jacobian. In other words, $h'(x)$ is a row vector. In addition, $g'(x)$ is the Jacobian, and $f'(g(x))$ is also the Jacobian of $f$ evaluated at $g(x)$.
+                </p>
+                
+                <p>
+                If instead, we defined $h'(x)$ as the gradient, or a column vector in this case, then the chain rule will look different since everything has to be transposed!
+                </p>
+                
+                <p>
+                Our goal is to compute a gradient with respect to all the parameters in a model, which in this case are all the weight matrices and the biases. We can start by computing the gradient wrt. the last layer:
+                </p>
+                
+                <p>
+                    $$\delta^{[r]}=\frac{\partial J}{\partial z^{[r]}} = \frac{\partial }{\partial z^{[r]}} \frac{1}{2}\left(z^{[r]}-y\right)^2 = (z^{[r]}-y)^T.$$
+                </p>
+                
+                <p>
+                Again, we note that in the equation above we take the transpose in the last step to keep $\delta^{[r]}$ a row vector, since $z^{[r]}$ and $y$ are by convention, column vectors.
+                </p>
+                
+                <p>
+                Now for all the previous layers, we have:
+                </p>
+                
+                <p>
+                    $$\delta^{[k]} = \frac{\partial J}{\partial z^{[k]}} = \frac{\partial J}{\partial z^{[k+1 ]}} \frac{\partial z^{[k+1]}}{\partial z^{[k]}} = \delta^{[k + 1]}\frac{\partial z^{[k+1]}}{\partial z^{[k]}}.$$
+                </p>
+                
+                <p>
+                Now by definition, we have:
+                </p>
+                
+                <p>
+                    $$z^{[k+1]} = W^{[k+1]} a^{[k]} + b^{[k]} = W^{[k+1]} \text{ReLU}(z^{[k]}) + b^{[k]}.$$
+                </p>
+                
+                <p>
+                Now we want to compute the Jacobian:
+                </p>
+                
+                <p>
+                    $$\frac{\partial z^{[k+1]}}{\partial z^{[k]}} = W^{[k+1]} \mathrm{diag}(I(z^{[k]}\geq 0))$$
+                </p>
+                
+                <p>
+                As a result, we find that:
+                </p>
+                
+                <p>
+                    $$\delta^{[k]} = \delta^{[k + 1]} W^{[k+1]} \mathrm{diag}(I(z^{[k]}\geq 0)).$$
+                </p>
+                
+                <p>
+                This is the correct formula for the Jacobian $\delta^{[k]} = \partial J/\partial z^{[k]}$. However, if we want to compute they gradient instead, we need to take the transpose, so this yields:
+                </p>
+                
+                <p>
+                    $$\begin{aligned}
+                    \nabla_{z^{[k]}} J &= \mathrm{diag}(I(z^{[k]}\geq 0)) {W^{[k+1]}}^T (\delta^{[k + 1]})^T \\
+                    &= \text{ReLU}'(z^{[k]}) \circ W^{[k+1]} \nabla_{z^{[k+1]}} J.
+                    \end{aligned}$$
+                </p>
+                
+                <p>
+                Note that if we had defined $\delta^{[k]}$ as a column vector instead, as many texts do, we will instead get the recursive formula:
+                </p>
+                
+                <p>
+                    $$\delta^{[k]} = \text{ReLU}'(z^{[k]}) \circ \left({W^{[k+1]}}^T \delta^{[k+1]}\right).$$
+                </p>
+                
+                <p>
+                This formula above is actually the one we find most online, so we will use this definition going forward. For all the formulas below, $\delta^{[k]}$ is a column vector.
+                </p>
+                
+                <p>
+                The formula itself is of course correct, but I rarely see it derived correctly. Now it remains to derive the final formula with respect to the weights. Let's first find the derivative with respect to $W^{[k]}$. We use the fact that:
+                </p>
+                
+                <p>
+                    $$z^{[k]} = W^{[k]}a^{[k-1]} + b^{[k]}.$$
+                </p>
+                
+                <p>
+                Now we apply the chain rule again:
+                </p>
+                
+                <p>
+                    $$\frac{\partial J}{\partial W^{[k]}} = \frac{\partial J}{\partial z^{[k]}} \frac{\partial z^{[k]}}{\partial W^{[k]}} = \delta^{k} (a^{[k-1]})^T, \quad \frac{\partial J}{\partial b^{[k]}} = \delta^{[k]}.$$
+                </p>
+                
+                <p>
+                We can check that the dimensions make sense. If we let $n_k$ denote the number of neurons in the $k$-th layer, then $W^{[k]}$ is of size $(n_k, n_{k-1})$. But $\delta^{[k]}$ is of size $(n_k, 1)$ and $a^{[k-1]}$ is of size $(n_{k-1},1)$, so the dimensions check out.
+                </p>
+                
+                <p>
+                We note again that while the first formula above is used by a lot of texts, and the result is correct, it lacks some justification because it is unclear why the chain rule applies here, since $W^{[k]}$ is a matrix. We can prove this rigorously using a perturbation, but I'll leave this for future work.
+                </p>
+
+                <hr>
+                
+                <h3>Backpropagation Algorithm</h3>
+                
+                <p>
+                Now we can summarize our result into the following easily implementable algorithm for backpropagation:
+                </p>
+                
+                <ol>
+                    <li>Compute and store the values of $a^{[k]}$'s and $z^{[k]}$'s for $k = 1, \ldots, r-1$, and $J$. <em>(This is often called the "forward pass")</em></li>
+                    <li>Compute $\delta^{[r]} = \frac{\partial J}{\partial z^{[r]}} = (z^{[r]} - o)$.</li>
+                    <li>For $k = r-1$ to $1$:
+                        <ul>
+                            <li>Compute $\delta^{[k]} = \frac{\partial J}{\partial z^{[k]}} = \left(W^{[k+1]^\top} \delta^{[k+1]}\right) \odot \text{ReLU}'(z^{[k]})$.</li>
+                        </ul>
+                    </li>
+                    <li>Compute:
+                        <p>
+                            $$\frac{\partial J}{\partial W^{[k+1]}} = \delta^{[k+1]} a^{[k]^\top}, \quad 
+                            \frac{\partial J}{\partial b^{[k+1]}} = \delta^{[k+1]}.$$
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024-2025 Gavin (Jialun) Zhang. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
