@@ -419,7 +419,7 @@ footer {
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
-        padding: 0 calc(var(--spacing-unit));
+        padding: 0 calc(var(--spacing-unit) * 2);
     }
 
     header {
@@ -427,15 +427,202 @@ footer {
     }
 
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-bottom: calc(var(--spacing-unit));
+    }
+    
+    nav ul {
+        gap: calc(var(--spacing-unit));
     }
 
     .profile, .publication-item {
         padding: calc(var(--spacing-unit) * 2);
     }
+    
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    .profile-photo {
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        width: 100%;
+        align-items: center;
+    }
+    
+    .profile-photo img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .contact-info {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .contact-info p {
+        align-items: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* Improve mobile navigation */
+    nav {
+        width: 100%;
+    }
+    
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    /* Adjust font sizes for mobile */
+    body {
+        font-size: 16px;
+    }
+    
+    .profile h2 {
+        font-size: 1.4rem;
+        margin-top: calc(var(--spacing-unit) * 2);
+    }
+    
+    .profile p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* Improve blog display */
+    .blog-post h3 {
+        font-size: 1rem;
+    }
+    
+    .blog-post .post-meta {
+        font-size: 0.8rem;
+    }
+    
+    /* Mobile publications */
+    .publications h2 {
+        font-size: 1.4rem;
+    }
+    
+    .publication-item h3 {
+        font-size: 1.1rem;
+    }
+}
 
+/* Small phones */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 calc(var(--spacing-unit) * 1.5);
+    }
+    
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    nav a {
+        padding: calc(var(--spacing-unit) * 0.4);
+        font-size: 0.9rem;
+    }
+    
+    .profile-photo img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Adjust spacing */
+    .profile {
+        margin: calc(var(--spacing-unit) * 2) 0;
+    }
+    
+    .post-header h1 {
+        font-size: 1.6rem;
+        padding-left: 0;
+    }
+    
+    .post-meta {
+        padding-left: 0;
+    }
+    
+    /* Make math equations more mobile-friendly */
+    mjx-container {
+        font-size: 0.7em !important;
+        max-width: 100% !important;
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding: 0.5em 0 !important;
+    }
+    
+    /* Fix blog content for mobile */
+    #post blockquote {
+        font-size: 16px;
+        padding: 0.5em;
+    }
+    
+    .blog-list-item .post-date {
+        min-width: 100px;
+        font-size: 0.8rem;
+    }
+    
+    .blog-list-item a {
+        font-size: 1rem;
+    }
+}
+
+/* Enhance MathJax mobile display */
+@media (max-width: 768px) {
+    mjx-container {
+        font-size: 0.85em;
+        overflow-x: auto;
+    }
+    
+    #post pre code {
+        font-size: 0.8rem;
+    }
+    
+    #post blockquote {
+        width: 100%;
+        font-size: 18px;
+    }
+}
+
+/* Fix mobile blog post layout */
+@media (max-width: 768px) {
+    .blog-post-full {
+        margin: calc(var(--spacing-unit) * 2) 0;
+        padding: calc(var(--spacing-unit) * 1) 0;
+    }
+    
+    .post-content h2 {
+        font-size: 1.3rem;
+        margin: calc(var(--spacing-unit) * 3) 0 calc(var(--spacing-unit) * 1.5) 0;
+    }
+    
+    .post-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .post-content {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
+/* Ensure social links display properly on mobile */
+@media (max-width: 768px) {
     .social-links {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .social-links a {
+        margin-bottom: calc(var(--spacing-unit));
+        justify-content: center;
+    }
+    
+    .social-links a svg {
+        margin-right: calc(var(--spacing-unit) * 0.5);
     }
 }
 
