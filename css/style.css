@@ -1,18 +1,18 @@
 /* Material Design inspired color scheme */
 :root {
-    --primary-color: #2e7d32;    /* Medium green */
-    --primary-light: #60ad5e;    /* Light green */
-    --primary-dark: #1b5e20;     /* Dark green */
-    --secondary-color: #333333;
-    --text-primary: #121212;
-    --text-secondary: #555555;
-    --background: #ffffff;
-    --surface: #ffffff;
+    --primary-color: #206a5d;    /* Modern deep green */
+    --primary-light: #81b29a;    /* Soft green accent */
+    --primary-dark: #173f35;     /* Banner dark green */
+    --secondary-color: #3d405b;  /* Muted blue-gray */
+    --text-primary: #22223b;     /* Deep readable gray */
+    --text-secondary: #6c757d;   /* Muted gray for secondary text */
+    --background: #fcfcfd;       /* Lighter off-white background */
+    --surface: #ffffff;          /* Card/section background */
     --error: #c62828;
     --max-width: 800px;
     --spacing-unit: 8px;
-    --conference-color: #3949ab;  /* Deep indigo */
-    --journal-color: #4527a0;     /* Deep purple */
+    --conference-color: #22223b;  /* Dark color for conferences */
+    --journal-color: #22223b;     /* Dark color for journals */
     --submitted-color: #6a6a00;   /* Dark yellow to complement green */
 }
 
@@ -28,18 +28,19 @@ body {
 
 /* Header styles */
 header {
-    color: white;
-    background-color: var(--primary-color);
+    color: #22223b;
+    background-color: var(--background);
     padding: calc(var(--spacing-unit) * 2) 0;
-    border-bottom: 1px solid var(--primary-dark);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    box-shadow: none;
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
 }
 
 nav ul {
@@ -51,21 +52,22 @@ nav ul {
 }
 
 nav a {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
     text-decoration: none;
     padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit));
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: white;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
 }
 
 nav a.active {
-    background-color: var(--primary-dark);
-    color: white;
+    background-color: var(--primary-color);
+    color: #f8f9fa;
 }
 
 /* Container */
@@ -82,6 +84,92 @@ nav a.active {
     background-color: transparent;
     border-radius: 0;
     box-shadow: none;
+}
+/* Featured Publications Section */
+.featured-publications {
+    margin: calc(var(--spacing-unit) * 4) 0;
+    background-color: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: calc(var(--spacing-unit) * 3);
+}
+
+.featured-publications h2 {
+    color: var(--primary-color);
+    margin: 0 0 calc(var(--spacing-unit) * 2) 0;
+    font-weight: 600;
+    font-size: 1.4rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: calc(var(--spacing-unit));
+}
+
+.pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
+    margin: 0;
+    padding: 0;
+}
+
+.pub-card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    padding: calc(var(--spacing-unit) * 2);
+    border: 1px solid rgba(0,0,0,0.07);
+    transition: box-shadow 0.2s;
+}
+.pub-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+}
+.pub-card h3 {
+    margin: 0 0 0.5em 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.pub-card h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline;
+}
+.pub-card h3 a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+.pub-meta {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.2em;
+}
+.pub-venue {
+    font-weight: 500;
+}
+.pub-venue.journal {
+    color: var(--journal-color);
+    font-weight: 500;
+    background: none;
+    letter-spacing: normal;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+}
+.pub-venue.conference {
+    color: var(--conference-color);
+    font-weight: 500;
+    background: none;
+    letter-spacing: normal;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+}
+}
+.pub-authors {
+    color: var(--text-secondary);
+    margin-left: 0;
+    margin-top: 0.2em;
+    text-align: left;
+    display: block;
 }
 
 .profile-content {
@@ -1397,15 +1485,3 @@ div.post-cite {
     color: var(--primary-dark);
     text-decoration: underline;
 }
-
-@media (max-width: 768px) {
-    .blog-list-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .blog-list-item .post-date {
-        margin-bottom: 0.5rem;
-        margin-right: 0;
-    }
-} 
