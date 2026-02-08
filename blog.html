@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})()</script>
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -44,6 +45,7 @@
 <li><a href="index.html">Home</a></li>
 <li><a href="publications.html">Publications</a></li>
 <li><a class="active" href="blog.html">Blog</a></li>
+<li><button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button></li>
 </ul>
 </nav>
 </div>

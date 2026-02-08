@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})()</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,7 @@
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="publications.html">Publications</a></li>
                     <li><a href="blog.html">Blog</a></li>
+                    <li><button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button></li>
                 </ul>
             </nav>
         </div>
@@ -41,35 +43,32 @@
                 <div class="profile-photo">
                     <img src="images/IMG_4464.png" alt="Gavin (Jialun) Zhang">
                     <div class="contact-info">
-                        <p>
-                            <span class="label">Email:</span>
-                            <a href="mailto:jialun2@illinois.edu">jialun2@illinois.edu</a>
-                        </p>
-
-                        <p>
-                            <span class="label">Phone:</span>
-                            <span>(909) 575-7644</span>
-                        </p>
-                        <div class="social-links">
-                            <a href="https://scholar.google.com/citations?user=p0qkHeoAAAAJ&hl=en&authuser=2" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
-                                </svg>
-                                Google Scholar
-                            </a>
-                        </div>
+                        <ul class="contact-list">
+                            <li class="contact-item">
+                                <span class="label">Email:</span>
+                                <a href="mailto:jialun2@illinois.edu">jialun2@illinois.edu</a>
+                            </li>
+                            <li class="contact-item">
+                                <span class="label">Google Scholar:</span>
+                                <a href="https://scholar.google.com/citations?user=p0qkHeoAAAAJ&hl=en&authuser=2" target="_blank" rel="noopener" aria-label="Google Scholar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="profile-text">
                     <h2>About Me</h2>
                     <p>
                         Hello! My name is Gavin. I'm a research scientist on the Kernels and Optimizations Team at  <a href="https://ai.meta.com/">Meta Superintelligence Labs</a> . I was previously part of the <a href="https://aisystemcodesign.github.io/">AI and Systems Co-Design team</a>. 
-                         My research focuses on training algorithms for large language models and large-scale recommendation systems. Currently I am working on the <a href="https://github.com/facebookresearch/optimizers/tree/main" target="_blank" rel="noopener"><strong>Distributed Shampoo optimizer</strong></a>.
-                         
-
-                         <br>
-                         <br>
-                         I finished my PhD in 2024 from the <a href="https://ece.illinois.edu/">ECE department</a> at the University of Illinois at Urbana-Champaign, where I worked on preconditioned gradient methods for low-rank matrix optimization. My advisor was <a href="https://ryz.ece.illinois.edu/">Richard Y. Zhang</a>. 
+                         I am interested in various aspects of pretraining for large language models. Currently I am working on:
+                         <ul>
+                             <li>Enhancing training stability in large-scale pretraining for LLMs</li>
+                             <li>Matrix-based optimizers like <a href="https://github.com/facebookresearch/optimizers/tree/main" target="_blank" rel="noopener"><strong>Distributed Shampoo</strong></a> and Muon</li>
+                         </ul>
+                         I finished my PhD in 2024 from the <a href="https://ece.illinois.edu/">ECE department</a> at the University of Illinois at Urbana-Champaign, where I worked on preconditioned gradient methods for matrix optimization. My advisor was <a href="https://ryz.ece.illinois.edu/">Richard Y. Zhang</a>. 
                       
                     </p>
                     <p>
@@ -79,38 +78,6 @@
                 </div>
             </div>
         </section>
-        <section class="featured-publications">
-            <h2>Selected Publications</h2>
-            <div class="pub-list">
-                <div class="pub-card">
-                    <h3><a href="https://arxiv.org/abs/2206.03345" target="_blank">Preconditioned Gradient Descent for Overparameterized Nonconvex Burer-Monteiro Factorization with Global Optimality Certification</a></h3>
-                    <div class="pub-meta">
-                        <span class="pub-venue journal">Journal of Machine Learning Research (JMLR 2023)</span>
-                    </div>
-                    <div class="pub-authors"><strong>Gavin Zhang</strong>, Salar Fattahi, Richard Y. Zhang</div>
-                </div>
-                <div class="pub-card">
-                    <h3><a href="https://arxiv.org/abs/2305.17224" target="_blank">Fast and Accurate Estimation of Low-Rank Matrices from Noisy Measurements via Preconditioned Non-Convex Gradient Descent</a></h3>
-                    <div class="pub-meta">
-                        <span class="pub-venue conference">Proceedings of The 27th International Conference on Artificial Intelligence and Statistics (AISTATS 2024)</span>
-                    </div>
-                    <div class="pub-authors"><strong>Gavin Zhang</strong>, Hong-Ming Chiu, Richard Y. Zhang</div>
-                </div>
-                <div class="pub-card">
-                    <h3><a href="https://arxiv.org/abs/2006.06915" target="_blank">How Many Samples is a Good Initial Point Worth in Low-rank Matrix Recovery?</a></h3>
-                    <div class="pub-meta">
-                        <span class="pub-venue conference">Advances in Neural Information Processing Systems (NeurIPS 2020, Spotlight Presentation)</span>
-                    </div>
-                    <div class="pub-authors"><strong>Gavin Zhang</strong>, Richard Y. Zhang</div>
-                </div>
-            </div>
-        </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024-2025 Gavin (Jialun) Zhang. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 </html>
