@@ -882,12 +882,14 @@ figcaption {
 }
 
 .tag {
-    background-color: var(--tag-background);
-    color: var(--tag-color);
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-subtle);
+    color: var(--primary-color);
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 0.8rem;
-    margin-right: 0.5rem;
+    font-weight: 500;
     white-space: nowrap;
 }
 
@@ -904,7 +906,6 @@ figcaption {
     font-size: 2rem;
     line-height: 1.3;
     border: none;
-    padding-left: 20px;
 }
 
 .post-content {
@@ -1269,25 +1270,29 @@ mjx-num, mjx-den {
     font-size: 2rem;
     line-height: 1.3;
     border: none;
-    padding-left: 20px;
 }
 
 .post-meta {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-bottom: calc(var(--spacing-unit) * 2);
-    gap: 1rem;
-    padding-left: 20px;
+    gap: 0.5rem;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .post-date {
-    display: inline-block;
-    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--text-secondary);
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
+    background-color: var(--bg-subtle);
+    padding: calc(var(--spacing-unit) * 0.25) calc(var(--spacing-unit) * 0.75);
+    border-radius: 999px;
 }
 
 .post-content {
@@ -1542,4 +1547,52 @@ div.post-cite {
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+/* Theorem / Definition / Proof environments */
+.theorem-env {
+    margin: 1.5em 0;
+    padding: 1em 1.2em;
+    border-left: 3px solid var(--primary-color);
+    background: var(--bg-subtle);
+    border-radius: 0 4px 4px 0;
+}
+
+.theorem-env .env-label {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-right: 0.4em;
+}
+
+.theorem-env.definition {
+    border-left-color: var(--secondary-color);
+}
+
+.theorem-env.definition .env-label {
+    color: var(--secondary-color);
+}
+
+.theorem-env.remark {
+    border-left-color: var(--text-secondary);
+    background: transparent;
+}
+
+.theorem-env.remark .env-label {
+    color: var(--text-secondary);
+}
+
+.proof-env {
+    margin: 1.5em 0;
+}
+
+.proof-env .proof-label {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.proof-env .qed {
+    float: right;
+    font-size: 1.1em;
+    line-height: 1;
 }

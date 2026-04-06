@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})()</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why muP Uses 1/d in Attention - Gavin (Jialun) Zhang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- MathJax for LaTeX support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3L1KZ1S91"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-X3L1KZ1S91');
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gavin (Jialun) Zhang</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="blog-post-full">
+            <header class="post-header">
+                <h1>Why muP Uses 1/d in Attention</h1>
+                <div class="post-meta">
+                    <span class="post-date">April 5, 2026</span>
+                    <span class="tag">Attention</span>
+                    <span class="tag">muP</span>
+                    <span class="tag">Stein's Lemma</span>
+                </div>
+            </header>
+
+            <div class="post-content" id="post">
+                <h2>Motivation</h2>
+
+                <p>
+                In transformer attention, the logits are $q^\top k$, where $q, k \in \mathbb{R}^d$ are query and key vectors. So if &mu;P says to scale attention by $1/d$ rather than the usual $1/\sqrt{d}$, the natural question is: <em>why?</em>
+                </p>
+
+                <p>
+                If $q$ and $k$ were <strong>independent</strong>, the usual $1/\sqrt{d}$ scaling would be exactly the right guess. Each term $q_i k_i$ is mean-zero with bounded variance, so the sum $q^\top k = \sum_i q_i k_i$ lives in the familiar Central Limit Theorem world and fluctuates at scale $\sqrt{d}$.
+                </p>
+
+                <p>
+                But during training, $q$ and $k$ pick up correlations. Then the summands $q_i k_i$ can reinforce one another, so the dot product starts looking less like a CLT object and more like a Law of Large Numbers object. In the large-width regime that &mu;P cares about, this matters because we want the size of $q^\top k$ to stay $O(1)$ as $d$ grows.
+                </p>
+
+                <p>
+                So the real issue is whether $q^\top k$ behaves like a $\sqrt{d}$ object or a $d$ object. This note gives a simple Gaussian calculation that makes that distinction explicit. The object we will compute is the $L^2$ norm
+                </p>
+
+                <p>
+                    $$\|q^\top k\|_2 := \left(\mathbb{E}[(q^\top k)^2]\right)^{1/2}$$
+                </p>
+
+                <p>
+                for jointly Gaussian $q$ and $k$. The answer splits neatly into a baseline term, which is there even when $q \perp k$, and two alignment terms controlled by the cross-covariance $C = \mathbb{E}[qk^\top]$. That decomposition makes the $\sqrt{d} \to d$ transition completely explicit.
+                </p>
+
+                <hr>
+
+                <h2>Setup</h2>
+
+                <p>
+                Of course, real query and key vectors in a trained network are not literally Gaussian. But in the spirit of &mu;P, it is useful to start with a simplified probabilistic model and see what it already explains.
+                </p>
+
+                <div class="theorem-env definition">
+                    <p>
+                    <span class="env-label">Assumption 1.</span>
+                    Let $q, k \in \mathbb{R}^d$ be <strong>jointly Gaussian</strong>, centered:
+                    </p>
+
+                    <p>
+                        $$
+                        \begin{pmatrix}
+                        q \\
+                        k
+                        \end{pmatrix}
+                        \sim \mathcal{N}\left(
+                        0,
+                        \begin{pmatrix}
+                        \Sigma_q & C \\
+                        C^\top & \Sigma_k
+                        \end{pmatrix}
+                        \right)
+                        $$
+                    </p>
+
+                    <p>
+                    where $\Sigma_q = \mathbb{E}[q q^\top]$, $\Sigma_k = \mathbb{E}[k k^\top]$, and $C = \mathbb{E}[q k^\top]$ is the cross-covariance. Define the scalar $S := q^\top k = \sum_{i=1}^d q_i k_i$.
+                    </p>
+                </div>
+
+                <p>
+                Before specializing to $S = q^\top k$, let me fix the standard probability notation: if $X$ is a random variable on a probability space and $\mathbb{E}[|X|^p] < \infty$, then its $L^p$ norm is
+                $$
+                \|X\|_p := \left(\mathbb{E}[|X|^p]\right)^{1/p}.
+                $$
+                See Vershynin, <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html" target="_blank" rel="noopener noreferrer"><em>High-Dimensional Probability</em></a>, Chapter 1.
+                </p>
+
+                <div class="theorem-env definition">
+                    <p>
+                    <span class="env-label">Definition 2.</span>
+                    The <strong>$L^2$ norm</strong> of $S = q^\top k$ is:
+                    </p>
+
+                    <p>
+                        $$\|S\|_2 := \left(\mathbb{E}[S^2]\right)^{1/2} = \left(\mathbb{E}[(q^\top k)^2]\right)^{1/2}$$
+                    </p>
+
+                    <p>
+                    This is the root-mean-square magnitude of the dot product.
+                    </p>
+                </div>
+
+                <hr>
+
+                <h2>Main Result</h2>
+
+                <div class="theorem-env">
+                    <p>
+                    <span class="env-label">Theorem 1.</span>
+                    Under Assumption 1,
+                    </p>
+
+                    <p>
+                        $$\boxed{
+                        \|q^\top k\|_2
+                        =
+                        \left(
+                        \operatorname{tr}(\Sigma_q \Sigma_k)
+                        +
+                        \|C\|_F^2
+                        +
+                        (\operatorname{tr} C)^2
+                        \right)^{1/2}
+                        }$$
+                    </p>
+                </div>
+
+                <hr>
+
+                <h2>Interpretation</h2>
+
+                <p>
+                The formula is easy to read once you look at the three terms separately:
+                </p>
+
+                <ul>
+                    <li><strong>Independent</strong> ($C = 0$): $\|q^\top k\|_2 = \sqrt{d}$ &mdash; CLT scaling.</li>
+                    <li><strong>Isotropic correlation</strong> ($C = \rho I$): $\|q^\top k\|_2 = \sqrt{d + \rho^2 d + \rho^2 d^2}$ &mdash; any nonzero $\rho$ makes the $d^2$ term dominate.</li>
+                    <li><strong>Perfect alignment</strong> ($k = q$): $\|q^\top k\|_2 \approx d$ &mdash; LLN scaling.</li>
+                </ul>
+
+                <p>
+                So the whole story is really carried by $C$. If $C$ is negligible, you stay in the $\sqrt{d}$ world. If $C$ has coherent structure, the $d$-scale behavior starts to take over.
+                </p>
+
+                <hr>
+
+                <h2>Proof of Theorem 1</h2>
+
+                <p>
+                This clean version of the proof using Stein's formula was found with the help of ChatGPT. My own proof computed $\mathbb{E}[(q^\top k)^2]$ by expanding everything into fourth-order Gaussian moments and I realized that I needed to <a href="https://en.wikipedia.org/wiki/Isserlis%27s_theorem" target="_blank" rel="noopener noreferrer">Isserlis's theorem</a> to continue the proof. That works, but in coordinates it quickly turns into quite a mess. 
+                </p>
+                <p>
+                After a few rounds of discussion with ChatGPT, it suggested using  <a href="https://en.wikipedia.org/wiki/Stein%27s_lemma" target="_blank" rel="noopener noreferrer">Stein's lemma</a> , which was a suprisingly elegant alternative. We package $q^\top k$ as a quadratic form $w^\top A w$ in the joint vector $w = (q, k)$, and then use Stein's lemma to get the needed quadratic-form identity almost for free.
+                </p>
+
+                <div class="theorem-env">
+                    <p>
+                    <span class="env-label">Lemma 1</span> (Stein's lemma).
+                    For $z \sim \mathcal{N}(0, I)$ and smooth $h : \mathbb{R}^n \to \mathbb{R}$ with $\mathbb{E}[|\nabla h(z)|] < \infty$,
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[z_i \, h(z)] = \mathbb{E}[\partial_i h(z)]$$
+                    </p>
+
+                    <p>
+                    Applying this twice gives the matrix form:
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[zz^\top h(z)] = I\,\mathbb{E}[h(z)] + \mathbb{E}[\nabla^2 h(z)]$$
+                    </p>
+                </div>
+
+                <div class="theorem-env">
+                    <p>
+                    <span class="env-label">Lemma 2</span> (Quadratic form identity).
+                    For $w \sim \mathcal{N}(0, \Sigma)$ and symmetric $B$,
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[(w^\top B w)^2]
+                        =
+                        (\operatorname{tr}(B\Sigma))^2
+                        +
+                        2\operatorname{tr}((B\Sigma)^2)$$
+                    </p>
+                </div>
+
+                <div class="proof-env">
+                    <p><span class="proof-label">Proof of Lemma 2.</span></p>
+
+                    <p>
+                    First reduce to the standard Gaussian case. Write $w = \Sigma^{1/2} z$ with $z \sim \mathcal{N}(0, I)$, and set $M = \Sigma^{1/2} B \Sigma^{1/2}$, which is still symmetric. Then $w^\top B w = z^\top M z$, and the trace identities $\operatorname{tr}(M) = \operatorname{tr}(B\Sigma)$ and $\operatorname{tr}(M^2) = \operatorname{tr}((B\Sigma)^2)$ follow from cyclicity. So all we really need is
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[(z^\top M z)^2] = (\operatorname{tr} M)^2 + 2\operatorname{tr}(M^2)$$
+                    </p>
+
+                    <p>
+                    Now apply Lemma 1 with $h(z) = z^\top M z$. Since $\mathbb{E}[h(z)] = \operatorname{tr} M$ and $\nabla^2 h(z) = 2M$, the matrix form of Stein's lemma gives
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[zz^\top (z^\top M z)] = (\operatorname{tr} M)\, I + 2M$$
+                    </p>
+
+                    <p>
+                    Finally, use the simple identity $(z^\top M z)^2 = \operatorname{tr}(Mzz^\top)\,(z^\top M z)$:
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[(z^\top M z)^2]
+                        = \operatorname{tr}\!\big(M \,\mathbb{E}[zz^\top (z^\top M z)]\big)
+                        = \operatorname{tr}\!\big(M((\operatorname{tr} M)\,I + 2M)\big)
+                        = (\operatorname{tr} M)^2 + 2\operatorname{tr}(M^2)$$
+                    </p>
+
+                    <p><span class="qed">$\square$</span></p>
+                </div>
+
+                <div class="proof-env">
+                    <p><span class="proof-label">Proof of Theorem 1.</span></p>
+
+                    <p>
+                    At this point the rest is bookkeeping. Write
+                    $$
+                    w = \begin{pmatrix} q \\ k \end{pmatrix} \sim \mathcal{N}(0, \Sigma),
+                    \qquad
+                    \Sigma = \begin{pmatrix} \Sigma_q & C \\ C^\top & \Sigma_k \end{pmatrix},
+                    $$
+                    and observe that $q^\top k = w^\top A w$ with
+                    $$
+                    A = \frac{1}{2}\begin{pmatrix} 0 & I_d \\ I_d & 0 \end{pmatrix}.
+                    $$
+                    Lemma 2 therefore gives
+                    $$
+                    \mathbb{E}[(q^\top k)^2] = (\operatorname{tr}(A\Sigma))^2 + 2\operatorname{tr}((A\Sigma)^2).
+                    $$
+                    A quick block multiplication shows that
+                    $$
+                    A\Sigma = \frac{1}{2}\begin{pmatrix} C^\top & \Sigma_k \\ \Sigma_q & C \end{pmatrix},
+                    $$
+                    so $\operatorname{tr}(A\Sigma) = \operatorname{tr} C$ and
+                    $\operatorname{tr}((A\Sigma)^2) = \frac{1}{2}(\operatorname{tr}(\Sigma_q \Sigma_k) + \|C\|_F^2)$. Plugging these in gives
+                    </p>
+
+                    <p>
+                        $$\mathbb{E}[(q^\top k)^2]
+                        = (\operatorname{tr} C)^2 + \operatorname{tr}(\Sigma_q \Sigma_k) + \|C\|_F^2$$
+                    </p>
+
+                    <p><span class="qed">$\square$</span></p>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024-2026 Gavin (Jialun) Zhang. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
