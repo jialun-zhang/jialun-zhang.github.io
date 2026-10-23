@@ -1,68 +1,71 @@
-/* Color Design System */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap');
+
+/* Shared visual tokens. Existing dimensions and page structure are preserved. */
 :root {
     --max-width: 800px;
     --spacing-unit: 8px;
+    --font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Libre Caslon Display', Baskerville, Georgia, serif;
 }
 
-/* Light theme (Anthropic-inspired) */
+/* Reflection-inspired paper, ink, and olive palette. */
 :root, [data-theme="light"] {
-    --primary-color: #d97757;
-    --primary-light: #e8a08a;
-    --primary-dark: #c4664a;
-    --secondary-color: #6b6963;
-    --text-primary: #141413;
-    --text-secondary: #87857e;
-    --background: #faf9f5;
-    --surface: #ffffff;
+    color-scheme: light;
+    --primary-color: #283817;
+    --primary-light: #e7e9dc;
+    --primary-dark: #19250e;
+    --secondary-color: #62645a;
+    --text-primary: #20211b;
+    --text-secondary: #62645a;
+    --background: #f7f6f1;
+    --surface: #f7f6f1;
     --error: #c62828;
-    --conference-color: #141413;
-    --journal-color: #788c5d;
-    --submitted-color: #b8860b;
-    --border-subtle: rgba(0,0,0,0.08);
-    --border-medium: rgba(0,0,0,0.12);
-    --bg-subtle: rgba(0,0,0,0.03);
-    --bg-hover: rgba(0,0,0,0.05);
-    --bg-code: #f5f4f0;
-    --bg-code-inline: #f0efeb;
-    --border-code: #e8e6dc;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 2px 4px rgba(0,0,0,0.06);
-    --shadow-lg: 0 4px 8px rgba(0,0,0,0.1);
-    --accent-hover: rgba(217,119,87,0.1);
-    --on-primary: #faf9f5;
+    --conference-color: #20211b;
+    --journal-color: #465833;
+    --submitted-color: #766326;
+    --border-subtle: #ddded4;
+    --border-medium: #bdc1b0;
+    --bg-subtle: #efefe7;
+    --bg-hover: #e9ebdf;
+    --bg-code: #efefe7;
+    --bg-code-inline: #e9ebdf;
+    --border-code: #ddded4;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --accent-hover: #e7e9dc;
+    --on-primary: #f7f6f1;
 }
 
 /* Dark theme */
 [data-theme="dark"] {
-    --primary-color: #2dd4bf;
-    --primary-light: #5eead4;
-    --primary-dark: #14b8a6;
-    --secondary-color: #94a3b8;
-    --text-primary: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --background: #0f1720;
-    --surface: #1a2332;
+    color-scheme: dark;
+    --primary-color: #c5d3a6;
+    --primary-light: #303a24;
+    --primary-dark: #e0e8cd;
+    --secondary-color: #b4b9a8;
+    --text-primary: #eeeee4;
+    --text-secondary: #b4b9a8;
+    --background: #191d15;
+    --surface: #191d15;
     --error: #f87171;
-    --conference-color: #cbd5e1;
-    --journal-color: #5eead4;
-    --submitted-color: #fbbf24;
-    --border-subtle: var(--border-subtle);
-    --border-medium: rgba(255,255,255,0.12);
-    --bg-subtle: rgba(255,255,255,0.03);
-    --bg-hover: var(--bg-subtle);
-    --bg-code: rgba(255,255,255,0.06);
-    --bg-code-inline: var(--border-subtle);
-    --border-code: rgba(255,255,255,0.1);
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-md: 0 2px 4px rgba(0,0,0,0.3);
-    --shadow-lg: 0 4px 8px rgba(0,0,0,0.4);
-    --accent-hover: rgba(45,212,191,0.1);
-    --on-primary: #0f1720;
+    --conference-color: #eeeee4;
+    --journal-color: #c5d3a6;
+    --submitted-color: #d3c18b;
+    --border-subtle: #3c4432;
+    --border-medium: #616c52;
+    --bg-subtle: #242a1e;
+    --bg-hover: #303a24;
+    --bg-code: #242a1e;
+    --bg-code-inline: #303a24;
+    --border-code: #3c4432;
+    --accent-hover: #303a24;
+    --on-primary: #191d15;
 }
 
 /* Base styles */
 body {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--background);
@@ -82,9 +85,9 @@ header {
 header h1 {
     margin: 0;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--primary-color);
-    letter-spacing: 1px;
+    letter-spacing: -0.02em;
 }
 
 nav ul {
@@ -99,7 +102,7 @@ nav a {
     color: var(--primary-color);
     text-decoration: none;
     padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit));
-    border-radius: 4px;
+    border-radius: 999px;
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
 }
@@ -261,7 +264,7 @@ nav a.active {
     border-radius: 8px;
     object-fit: cover;
     border: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-shadow: none;
     image-rendering: -webkit-optimize-contrast; /* Improves sharpness in WebKit browsers */
     image-rendering: crisp-edges; /* Modern standard */
     -ms-interpolation-mode: bicubic; /* IE */
@@ -342,6 +345,12 @@ nav a.active {
 
 .contact-item a svg {
     display: block;
+}
+
+.contact-item .scholar-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+    gap: calc(var(--spacing-unit) * 0.5);
 }
 
 /* Publications section */
@@ -789,6 +798,11 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.25;
 }
 
+/* Serif titles and quiet sans-serif detail, using the existing type scale. */
+h1, h2 {
+    font-family: var(--font-display);
+}
+
 h1 {
     font-size: 2em;
 }
@@ -1142,7 +1156,7 @@ mjx-num, mjx-den {
 }
 
 .blog-post:hover {
-    transform: translateY(-1px);
+    background-color: var(--bg-hover);
     box-shadow: var(--shadow-md);
 }
 
@@ -1266,7 +1280,7 @@ mjx-num, mjx-den {
 .post-header h1 {
     color: var(--text-primary);
     margin: 0 0 calc(var(--spacing-unit)) 0;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2rem;
     line-height: 1.3;
     border: none;
@@ -1527,7 +1541,7 @@ div.post-cite {
     color: var(--text-primary);
     cursor: pointer;
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: 999px;
     font-size: 1rem;
     line-height: 1;
     transition: background-color 0.2s, border-color 0.2s;
@@ -1595,4 +1609,26 @@ div.post-cite {
     float: right;
     font-size: 1.1em;
     line-height: 1;
+}
+
+/* Surface and control treatments do not alter sizing or positioning. */
+.profile h2, .publications h2, .blog-section h2, .post-content h2 {
+    font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+.blog-post, .publication-item {
+    border-color: var(--border-subtle);
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+    }
 }

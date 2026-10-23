@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})()</script>
+<script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)})()</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gavin (Jialun) Zhang</title>
-    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" href="css/style.css?v=reflection-clean-20261023">
     <link rel="stylesheet" href="css/normalize.css">
     <!-- MathJax for LaTeX support -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -48,12 +48,15 @@
                                 <a href="mailto:jialun2@illinois.edu">jialun2@illinois.edu</a>
                             </li>
                             <li class="contact-item">
-                                <span class="label">Google Scholar:</span>
-                                <a href="https://scholar.google.com/citations?user=p0qkHeoAAAAJ&hl=en&authuser=2" target="_blank" rel="noopener" aria-label="Google Scholar">
+                                <a class="scholar-link" href="https://scholar.google.com/citations?user=p0qkHeoAAAAJ&amp;hl=en&amp;authuser=2" target="_blank" rel="noopener">
+                                    <span class="label">Google Scholar</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                         <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
                                     </svg>
                                 </a>
+                            </li>
+                            <li class="contact-item">
+                                <a class="label" href="https://www.linkedin.com/in/gavin-zhang-082a0978/" target="_blank" rel="noopener">LinkedIn</a>
                             </li>
                         </ul>
                     </div>
@@ -61,17 +64,17 @@
                 <div class="profile-text">
                     <h2>About Me</h2>
                     <p>
-                        Hello! My name is Gavin. I'm a research scientist on the Kernels and Optimizations Team at  <a href="https://ai.meta.com/">Meta Superintelligence Labs</a> . I was previously part of the <a href="https://aisystemcodesign.github.io/">AI and Systems Co-Design team</a>. 
-                         I am interested in various aspects of pretraining for large language models. Currently I am working on:
-                         <ul>
-                             <li>Enhancing training stability in large-scale pretraining for LLMs</li>
-                             <li>Matrix-based optimizers like <a href="https://github.com/facebookresearch/optimizers/tree/main" target="_blank" rel="noopener"><strong>Distributed Shampoo</strong></a> and Muon</li>
-                         </ul>
-                         I finished my PhD in 2024 from the <a href="https://ece.illinois.edu/">ECE department</a> at the University of Illinois at Urbana-Champaign, where I worked on preconditioned gradient methods for matrix optimization. My advisor was <a href="https://ryz.ece.illinois.edu/">Richard Y. Zhang</a>. 
+                        I'm a Member of Technical Staff on the pretraining team at <a href="https://reflection.ai/">Reflection</a>. I'm interested in the science of scaling, with a focus on training dynamics, hyperparameter transfer, and compute-efficient optimizers. I currently work on <a href="https://reflection.ai/beam-model-card">Beam</a>, our largest frontier open-weight model.
+                    </p>
+                    <p>
+                           Previously, I was a research scientist at <a href="https://ai.meta.com/">Meta Superintelligence Labs</a>, where I worked on pretraining for Muse Spark 🥑 and Muse Wonder 🍉. I have also worked on the Shampoo optimizer in the <a href="https://aisystemcodesign.github.io/">AI and Systems Co-Design team</a>.
+                    </p>
+                    <p>
+                         I finished my PhD in 2024 from the <a href="https://ece.illinois.edu/">ECE department</a> at the University of Illinois at Urbana-Champaign, where I worked on preconditioned optimizers for matrix optimization. My advisor was <a href="https://ryz.ece.illinois.edu/">Richard Y. Zhang</a>.
                       
                     </p>
                     <p>
-                        Previously, I received a bachelor's degree in mathematics from <a href="https://www.hmc.edu/">Harvey Mudd College</a>, and a master's degree in computational mathematics from <a href="https://icme.stanford.edu/">Stanford</a>.<br>
+                        Previously, I received a bachelor's degree in mathematics from <a href="https://www.hmc.edu/">Harvey Mudd College</a> and a master's degree in computational mathematics from <a href="https://icme.stanford.edu/">Stanford</a>.<br>
         
                     </p>
                 </div>

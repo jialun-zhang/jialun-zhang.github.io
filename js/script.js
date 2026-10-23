@@ -16,7 +16,7 @@ function toggleTheme() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    updateToggleIcon(document.documentElement.getAttribute('data-theme') || 'light');
+    updateToggleIcon(document.documentElement.getAttribute('data-theme') || 'dark');
     // Make the entire publications section expandable
     const publicationsSection = document.querySelector('.publications');
     if (publicationsSection) {
@@ -173,4 +173,4 @@ function setupCitationCopy() {
             });
         }
     });
-} 
+}
