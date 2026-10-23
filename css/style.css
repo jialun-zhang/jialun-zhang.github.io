@@ -8,37 +8,8 @@
     --font-display: 'Libre Caslon Display', Baskerville, Georgia, serif;
 }
 
-/* Reflection-inspired paper, ink, and olive palette. */
-:root, [data-theme="light"] {
-    color-scheme: light;
-    --primary-color: #283817;
-    --primary-light: #e7e9dc;
-    --primary-dark: #19250e;
-    --secondary-color: #62645a;
-    --text-primary: #20211b;
-    --text-secondary: #62645a;
-    --background: #f7f6f1;
-    --surface: #f7f6f1;
-    --error: #c62828;
-    --conference-color: #20211b;
-    --journal-color: #465833;
-    --submitted-color: #766326;
-    --border-subtle: #ddded4;
-    --border-medium: #bdc1b0;
-    --bg-subtle: #efefe7;
-    --bg-hover: #e9ebdf;
-    --bg-code: #efefe7;
-    --bg-code-inline: #e9ebdf;
-    --border-code: #ddded4;
-    --shadow-sm: none;
-    --shadow-md: none;
-    --shadow-lg: none;
-    --accent-hover: #e7e9dc;
-    --on-primary: #f7f6f1;
-}
-
-/* Dark theme */
-[data-theme="dark"] {
+/* Dark-only olive palette; independent of browser or saved theme preferences. */
+:root {
     color-scheme: dark;
     --primary-color: #c5d3a6;
     --primary-light: #303a24;
@@ -59,6 +30,9 @@
     --bg-code: #242a1e;
     --bg-code-inline: #303a24;
     --border-code: #3c4432;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
     --accent-hover: #303a24;
     --on-primary: #191d15;
 }
@@ -1532,35 +1506,6 @@ div.post-cite {
 .blog-list-item a:hover {
     color: var(--primary-dark);
     text-decoration: underline;
-}
-
-/* Theme toggle button */
-#theme-toggle {
-    background: none;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 1rem;
-    line-height: 1;
-    transition: background-color 0.2s, border-color 0.2s;
-    display: flex;
-    align-items: center;
-}
-
-#theme-toggle:hover {
-    background-color: var(--bg-hover);
-}
-
-#theme-toggle svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
 }
 
 /* Theorem / Definition / Proof environments */
